@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cat & Dog Classifier</title>
+
+    <link
+        rel="stylesheet"
+        href="{{ url_for('static', filename='styles.css') }}"
+    >
+</head>
+<body class="home-page">
+    <div class="background-overlay"></div>
+
+    <main class="hero">
+        <div class="hero-content">
+            <span class="eyebrow">AI IMAGE RECOGNITION</span>
+
+            <h1>Cat <span>&</span> Dog</h1>
+
+            <p class="subtitle">
+                Discover who's in your picture.
+            </p>
+
+            <p class="description">
+                Upload an image and let artificial intelligence
+                identify whether it contains a cat or a dog.
+            </p>
+
+            {% if error %}
+                <p class="error">{{ error }}</p>
+            {% endif %}
+
+            <form
+                class="upload-form"
+                method="POST"
+                enctype="multipart/form-data"
+            >
+                <label class="upload-button" for="image">
+                    <span class="upload-icon">＋</span>
+                    <span>Choose an image</span>
+                </label>
+
+                <input
+                    type="file"
+                    id="image"
+                    name="image"
+                    accept=".jpg,.jpeg,.png,.webp,.bmp"
+                    required
+                >
+
+                <p class="file-name" id="file-name">
+                    JPG, PNG, WEBP or BMP
+                </p>
+
+                <button class="classify-button" type="submit">
+                    Identify my image
+                    <span>→</span>
+                </button>
+            </form>
+
+            <p class="footer-note">
+                Powered by Machine Learning
+            </p>
+        </div>
+    </main>
+
+    <script>
+        const imageInput = document.getElementById("image");
+        const fileName = document.getElementById("file-name");
+
+        imageInput.addEventListener("change", function () {
+            if (this.files.length > 0) {
+                fileName.textContent = this.files[0].name;
+            } else {
+                fileName.textContent = "JPG, PNG, WEBP or BMP";
+            }
+        });
+    </script>
+</body>
+</html>

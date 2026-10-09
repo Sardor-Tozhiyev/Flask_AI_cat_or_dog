@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Classification Result | Cat & Dog Classifier</title>
+
+    <link
+        rel="stylesheet"
+        href="{{ url_for('static', filename='styles.css') }}"
+    >
+</head>
+
+<body class="result-page">
+    <main class="result-card">
+
+        <span class="eyebrow">AI ANALYSIS COMPLETE</span>
+
+        <h1>Meet your <span>{{ label }}</span>!</h1>
+
+        <p class="result-description">
+            Our AI has analyzed your image.
+            Here is what we discovered.
+        </p>
+
+        {% if label == "Cat" %}
+            <img
+                class="result-image"
+                src="{{ url_for('static', filename='images/cat.jpg') }}"
+                alt="Cat"
+            >
+            <div class="result-badge cat-badge">
+                🐱 Cat detected
+            </div>
+        {% else %}
+            <img
+                class="result-image"
+                src="{{ url_for('static', filename='images/dog.jpg') }}"
+                alt="Dog"
+            >
+            <div class="result-badge dog-badge">
+                🐶 Dog detected
+            </div>
+        {% endif %}
+
+        <section class="confidence-section">
+            <div class="confidence-label">
+                <span>Prediction confidence</span>
+                <strong>{{ confidence }}%</strong>
+            </div>
+
+            <div class="confidence-track">
+                <div
+                    class="confidence-fill"
+                    style="width: {{ confidence }}%;"
+                ></div>
+            </div>
+        </section>
+
+        <a class="button result-button" href="{{ url_for('index') }}">
+            <span>↻</span>
+            Try another image
+        </a>
+
+        <p class="footer-note">
+            CAT & DOG CLASSIFIER · POWERED BY AI
+        </p>
+
+    </main>
+</body>
+</html>
