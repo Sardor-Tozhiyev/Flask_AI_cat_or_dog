@@ -1,0 +1,54 @@
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+dist/
+build/
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# Environment variables and secrets
+.env
+.env.*
+!.env.example
+
+# Flask
+instance/
+.webassets-cache/
+
+# Uploaded images (user data)
+static/uploads/*
+!static/uploads/.gitkeep
+
+# Model files (large files; keep out of Git if needed)
+# Uncomment if you do not want to upload the trained model
+# static/models/*.keras
+# static/models/*.h5
+# static/models/*.pkl
+
+# Jupyter Notebook
+.ipynb_checkpoints/
+
+# IDEs
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Logs
+*.log
+
+# Tests and coverage
+.pytest_cache/
+.coverage
+htmlcov/
